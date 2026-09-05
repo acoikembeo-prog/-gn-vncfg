@@ -1,0 +1,519 @@
+Con bảo ba con là đi như nào đi
+Tài thật nt ko bao h fdc
+Mẹ uống j ạ
+Vừa đá
+Cốc của mẹ ạ
+Gọi điện cho ông ngoại đi các con
+Vâng ạ
+Nâud cơm đi con
+Hỏi ba hqua cái sườn ba để đâu
+Con đang chơi dở ạ
+Ok
+Nốt đi
+Alo
+Con dậy chưa
+Đây ạ
+Ok. Để mẹ còn đi ngủ
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Football Ultimate</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    font-family:Arial,sans-serif;
+    background:#07101c;
+    color:white;
+    min-height:100vh;
+}
+button{
+    border:0;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+}
+#app{min-height:100vh}
+
+/* START */
+.start{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,#12345a,#07101c 65%);
+}
+.start-box{padding:30px}
+.logo{
+    font-size:48px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+.sub{color:#8fa8c4;margin-bottom:35px}
+.start-btn{
+    background:#1687ff;
+    padding:17px 55px;
+    border-radius:12px;
+    font-size:20px;
+}
+.start-btn:hover{background:#36a0ff}
+
+/* CLUB */
+.club-page{padding:25px;max-width:1100px;margin:auto}
+.title{text-align:center;font-size:30px;margin:15px}
+.club-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+}
+.club{
+    background:#111d2c;
+    border:1px solid #243951;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+.club:hover{
+    border-color:#1687ff;
+    transform:translateY(-3px);
+}
+.club-logo{
+    width:70px;
+    height:70px;
+    margin:auto auto 12px;
+    border-radius:50%;
+    background:#263b53;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+/* MAIN */
+.main{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    min-height:100vh;
+}
+.sidebar{
+    background:#0b1522;
+    border-right:1px solid #203248;
+    padding:15px;
+}
+.brand{
+    font-size:22px;
+    font-weight:900;
+    padding:15px 10px 25px;
+}
+.nav{
+    width:100%;
+    text-align:left;
+    padding:13px;
+    margin:4px 0;
+    border-radius:9px;
+    background:transparent;
+}
+.nav:hover,.nav.active{background:#1687ff}
+.content{padding:20px;overflow:hidden}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+}
+.money{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+.money span{
+    background:#101e2d;
+    padding:10px 14px;
+    border-radius:9px;
+    border:1px solid #22364c;
+}
+
+.page{display:none}
+.page.active{display:block}
+
+/* HOME */
+.hero{
+    background:linear-gradient(135deg,#102f4c,#0c1827);
+    border:1px solid #294a67;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:20px;
+}
+.hero h1{font-size:30px;margin-bottom:8px}
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+.statbox{
+    background:#101e2d;
+    padding:18px;
+    border-radius:12px;
+}
+.statbox b{font-size:25px}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
+}
+.card{
+    position:relative;
+    overflow:hidden;
+    min-height:280px;
+padding:12px;
+    border-radius:16px;
+    background:linear-gradient(160deg,#172c43,#09121d);
+    border:2px solid #31506e;
+}
+.card.toty{border-color:#f0c85c}
+.card.icon{border-color:#9e65ff}
+.card.legend{border-color:#ff8b3d}
+.card img{
+    display:block;
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    object-position:center top;
+    background:#18283a;
+    border-radius:10px;
+}
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+}
+.ovr{
+    font-size:27px;
+    font-weight:900;
+}
+.season{
+    font-size:11px;
+    background:#263e58;
+    padding:5px 7px;
+    border-radius:6px;
+}
+.card-name{font-size:18px;font-weight:bold;margin-top:8px}
+.card-position{color:#8fa8c4;font-size:13px}
+.card-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px;
+    margin-top:8px;
+    font-size:12px;
+}
+
+/* SQUAD */
+.squad-layout{
+    display:grid;
+    grid-template-columns:1fr 320px;
+    gap:20px;
+}
+.field{
+    position:relative;
+    min-height:620px;
+    border-radius:18px;
+    overflow:hidden;
+    background:
+    repeating-linear-gradient(
+        90deg,
+        #126a3c 0,
+        #126a3c 10%,
+        #137241 10%,
+        #137241 20%
+    );
+    border:4px solid #eee;
+}
+.field:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    height:100%;
+    width:2px;
+    background:#ffffff88;
+}
+.center-circle{
+    position:absolute;
+    width:130px;
+    height:130px;
+    border:2px solid #ffffff88;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+.player-dot{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    width:70px;
+    text-align:center;
+}
+.player-dot img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid white;
+    background:#15283a;
+}
+.player-dot div{
+    font-size:11px;
+    background:#07101cdd;
+    border-radius:5px;
+    padding:2px;
+}
+.tactics{
+    background:#101d2b;
+    padding:18px;
+    border-radius:15px;
+}
+select,input{
+    width:100%;
+    padding:10px;
+    margin:7px 0 14px;
+    border-radius:8px;
+    background:#17283b;
+    color:white;
+    border:1px solid #36516b;
+}
+
+/* MARKET */
+.market-list{
+    display:grid;
+    gap:10px;
+}
+.market-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#101d2b;
+    padding:12px;
+    border-radius:12px;
+}
+.market-item img{
+    width:55px;
+    height:55px;
+    object-fit:cover;
+    border-radius:8px;
+}
+.buy{
+    margin-left:auto;
+    padding:9px 14px;
+    background:#1687ff;
+    border-radius:8px;
+}
+
+/* UPGRADE */
+.upgrade-box{
+    max-width:600px;
+    margin:auto;
+    background:#101d2b;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+}
+.upgrade-card{
+    max-width:220px;
+    margin:20px auto;
+}
+.upgrade-btn{
+    padding:14px 35px;
+    border-radius:10px;
+    background:#1687ff;
+}
+
+/* MATCH */
+.match{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#06101b;
+    z-index:99;
+}
+.match.active{display:block}
+.match-field{
+    position:absolute;
+    inset:40px 20px 100px;
+    background:
+    repeating-linear-gradient(
+        90deg,
+        #11733d 0,
+        #11733d 8%,
+        #138044 8%,
+        #138044 16%
+    );
+    border:3px solid white;
+    overflow:hidden;
+}
+.match-field:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    height:100%;
+    width:3px;
+    background:#ffffff88;
+}
+.ball{
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:white;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+}
+.match-player{
+    position:absolute;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#178bff;
+    border:3px solid white;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    line-height:34px;
+    font-size:11px;
+}
+.controls{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    right:15px;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+.control{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#13263bdd;
+    border:1px solid #58718a;
+}
+.close-match{
+    position:absolute;
+    right:15px;
+    top:10px;
+    padding:10px 18px;
+    border-radius:8px;
+    background:#c83232;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+    .main{grid-template-columns:1fr}
+    .sidebar{
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        height:65px;
+        z-index:20;
+        display:flex;
+        padding:5px;
+        border-top:1px solid #203248;
+        border-right:0;
+        overflow-x:auto;
+    }
+    .brand{display:none}
+    .nav{
+        min-width:75px;
+        font-size:11px;
+        text-align:center;
+        padding:9px 4px;
+    }
+    .content{padding:12px;padding-bottom:80px}
+    .stats-grid{grid-template-columns:1fr 1fr}
+    .squad-layout{grid-template-columns:1fr}
+    .field{min-height:500px}
+    .topbar{align-items:flex-start;flex-direction:column}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .card{min-height:250px}
+    .card img{height:125px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<!-- MATCH -->
+<div id="match" class="match">
+    <button class="close-match" onclick="closeMatch()">Thoát trận</button>
+    <div class="match-field" id="matchField">
+        <div class="ball" id="ball"></div>
+    </div>
+
+    <div class="controls">
+        <button class="control" ontouchstart="move('up')">↑</button>
+        <button class="control" ontouchstart="move('left')">←</button>
+        <button class="control" onclick="pass()">PASS</button>
+        <button class="control" onclick="shoot()">SHOT</button>
+        <button class="control" ontouchstart="move('right')">→</button>
+        <button class="control" ontouchstart="move('down')">↓</button>
+    </div>
+</div>
+
+<script>
+
+/* =========================================================
+   50 MÙA THẺ
+========================================================= */
+
+const SEASONS = [
+["BASE","Thẻ cơ bản"],
+["TOTY_2026","Team of the Year 2026"],
+["TOTS_2026","Team of the Season 2026"],
+["UCL","UEFA Champions League"],
+["UEL","UEFA Europa League"],
+["WC","World Cup"],
+["EURO","UEFA European Championship"],
+["COPA","Copa América"],
+["ICON","Huyền thoại"],
+["HERO","Người hùng"],
+["LEGEND","Huyền thoại đặc biệt"],
+["GOLDEN_BOY","Golden Boy"],
+["RISING_STAR","Rising Star"],
+["MVP","MVP"],
+["CAPTAIN","Captain"],
+["RECORD","Record"],
+["FLASHBACK","Flashback"],
+["PRIME","Prime"],
+["PEAK","Peak"],
+["FANTASY","Fantasy"],
+["CHAMPION","Champion"],
+["FINALS","Finals"],
+["DERBY","Derby"],
+["CLUB_HERO","Club Hero"],
+["NATIONAL_HERO","National Hero"],
+["PLAYMAKER","Playmaker"],
+["GOAL_MACHINE","Goal Machine"],
+["DEFENDER","Defender"],
+["KEEPER","Keeper"],
+["SPEED","Speed"],
+["TECHNICIAN","Technician"],
+["POWER","Power"],
+["FINISHER","Finisher"],
+["PASS_MASTER","Pass Master"],
+["DRIBBLE_MASTER","Dribble Master"],
+["WALL","Wall"],
+["BIG_GAME","Big Game"],
+["COMEBACK","Comeback"],
+["YOUNG_STAR","Young Star"],
+["VETERAN","Veteran"],
+["ALL_STAR","All Star
